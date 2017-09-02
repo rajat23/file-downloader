@@ -1,19 +1,25 @@
 package connection;
 
+import lombok.Getter;
+
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.Optional;
 
 public class Connection {
 
-    public static Optional<URLConnection> connectTo(String downloadUrl) throws IOException {
+    @Getter
+    private HttpURLConnection httpURLConnection;
+
+    public void connectTo(String downloadUrl) {
         try {
             URL url = new URL(downloadUrl);
-            return Optional.of(url.openConnection());
-        } catch (IOException e) {
-            return Optional.empty();
-        }
+            httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.connect();
+        } catch (IOException e) {}
+    }
 
+    public void disconnect() {
+        httpURLConnection.disconnect();
     }
 }
