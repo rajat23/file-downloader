@@ -1,4 +1,4 @@
-package downloader;
+package download;
 
 import io.Writer;
 import org.junit.Before;

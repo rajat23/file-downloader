@@ -1,4 +1,4 @@
-package downloader;
+package download;
 
 import io.Reader;
 import io.Writer;
@@ -36,7 +36,7 @@ public class DownloaderTest {
 
     @Test
     public void shouldBeAbleToDownloadTheFile() throws IOException {
-        Optional<RandomAccessFile> randomAccessFile = Optional.of(new RandomAccessFile("src/test/resources/sample.txt", "rw"));
+        Optional<RandomAccessFile> fileToBeDownload = Optional.of(new RandomAccessFile("src/test/resources/sample.txt", "rw"));
         byte[] buffer = new byte[4096];
         int bytesRead = 2000;
         int endBytesRead = -1;
@@ -47,7 +47,7 @@ public class DownloaderTest {
 
         doNothing().when(stateManager).trackContentDownloaded(bytesRead);
         doNothing().when(writer).write(bytesRead, buffer);
-        when(writer.getRandomAccessFile()).thenReturn(randomAccessFile);
+        when(writer.getRandomAccessFile()).thenReturn(fileToBeDownload);
 
         Optional<RandomAccessFile> actualFile = downloader.download();
         verify(stateManager,times(2)).isDownloading();

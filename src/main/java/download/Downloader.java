@@ -1,4 +1,4 @@
-package downloader;
+package download;
 
 import console.Display;
 import io.Reader;

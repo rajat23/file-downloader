@@ -1,4 +1,4 @@
-package downloader;
+package download;
 
 import connection.Connection;
 import console.Display;
