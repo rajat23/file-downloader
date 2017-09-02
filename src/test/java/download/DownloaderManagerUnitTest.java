@@ -14,9 +14,7 @@ import java.io.RandomAccessFile;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DownloaderManagerUnitTest {
@@ -38,7 +36,7 @@ public class DownloaderManagerUnitTest {
 
     @Before
     public void setUp() {
-        downloaderManager = new DownloaderManager(downloader, connection, reader, writer);
+        downloaderManager = new DownloaderManager(connection, reader, writer,downloader);
     }
 
     @Test

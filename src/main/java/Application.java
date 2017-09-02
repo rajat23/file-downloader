@@ -15,7 +15,7 @@ public class Application {
         Connection connection = new Connection();
         Downloader downloader = new Downloader(stateManager,reader,writer);
 
-        DownloaderManager downloaderManager = new DownloaderManager(downloader, connection, reader, writer);
+        DownloaderManager downloaderManager = new DownloaderManager(connection, reader, writer,downloader);
         downloaderManager.download("https://www.nginx.com/wp-content/uploads/2015/01/Building_Microservices_Nginx.pdf", "/Users/rajatc/Desktop");
     }
 }

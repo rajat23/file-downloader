@@ -2,7 +2,6 @@ package console;
 
 public class Display {
 
-
     public static void startProgress() {
         System.out.print("[");
     }

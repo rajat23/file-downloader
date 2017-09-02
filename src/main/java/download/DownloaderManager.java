@@ -4,23 +4,20 @@ import connection.Connection;
 import console.Display;
 import io.Reader;
 import io.Writer;
+import lombok.AllArgsConstructor;
+import lombok.NonNull;
+
 import java.io.RandomAccessFile;
 import java.util.Optional;
 
+@AllArgsConstructor
 public class DownloaderManager {
     private Connection connection;
     private Reader reader;
     private Writer writer;
     private Downloader downloader;
 
-    public DownloaderManager(Downloader downloader, Connection connection, Reader reader, Writer writer) {
-        this.reader = reader;
-        this.writer = writer;
-        this.connection = connection;
-        this.downloader = downloader;
-    }
-
-    public Optional<RandomAccessFile> download(String url, String location) {
+    public Optional<RandomAccessFile> download(@NonNull String url, @NonNull String location) {
         connection.connectTo(url);
         reader.obtainInputStream(connection);
         writer.obtainOutputStream(location, url);
