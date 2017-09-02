@@ -49,13 +49,13 @@ public class DownloaderTest {
         doNothing().when(writer).write(bytesRead, buffer);
         when(writer.getRandomAccessFile()).thenReturn(randomAccessFile);
 
-        downloader.download();
+        Optional<RandomAccessFile> actualFile = downloader.download();
         verify(stateManager,times(2)).isDownloading();
         verify(reader,times(2)).readContent(buffer);
         verify(stateManager,times(1)).trackContentDownloaded(bytesRead);
         verify(writer,times(1)).write(bytesRead,buffer);
 
-        assertEquals(randomAccessFile.get().length(), fileSize);
+        assertEquals(actualFile.get().length(), fileSize);
     }
 
 }

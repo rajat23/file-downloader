@@ -23,7 +23,6 @@ public class StateManager {
         return status == Status.DOWNLOADING;
     }
 
-
     public void trackContentDownloaded(int bytesRead) {
         downloaded += bytesRead;
     }
