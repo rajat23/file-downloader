@@ -16,7 +16,10 @@ public class Connection {
             URL url = new URL(downloadUrl);
             httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.connect();
-        } catch (IOException e) {}
+        } catch (IOException e) {
+            System.out.println("Could not connect to given URL.Please make sure you are connected to internet");
+            System.exit(0);
+        }
     }
 
     public void disconnect() {
