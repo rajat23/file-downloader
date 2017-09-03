@@ -13,10 +13,11 @@ public class Downloader {
     private StateManager state;
     private Reader reader;
     private Writer writer;
+    private static final int BUFFER_SIZE = 4096;
 
     public Optional<RandomAccessFile> download() {
         while (state.isDownloading()) {
-            byte [] buffer = new byte[4096];
+            byte [] buffer = new byte[BUFFER_SIZE];
             int bytesRead = reader.readContent(buffer);
             if (noMoreContentAvailable(bytesRead))
                 break;
