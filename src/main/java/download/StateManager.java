@@ -2,6 +2,7 @@ package download;
 
 import connection.Connection;
 import io.Writer;
+import lombok.NonNull;
 
 public class StateManager {
 
@@ -15,7 +16,7 @@ public class StateManager {
     private Writer writer;
     private Connection connection;
 
-    public StateManager(Writer writer, Connection connection) {
+    public StateManager(@NonNull Writer writer, @NonNull Connection connection) {
         this.downloaded = 0;
         this.writer = writer;
         this.status = Status.DOWNLOADING;
