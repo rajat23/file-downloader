@@ -8,6 +8,8 @@ import io.Writer;
 public class Application {
 
     public static void main(String[] args) {
+        String url = args[0];
+        String location = args[1];
 
         Reader reader = new Reader();
         Writer writer = new Writer();
@@ -15,7 +17,9 @@ public class Application {
         StateManager stateManager = new StateManager(writer,connection);
         Downloader downloader = new Downloader(stateManager,reader,writer);
 
+
         DownloaderManager downloaderManager = new DownloaderManager(connection, reader, writer,downloader);
-        downloaderManager.download("https://www.nginx.com/wp-content/uploads/2015/01/Building_Microservices_Nginx.pdf", "/Users/rajatc/Desktop");
+
+        downloaderManager.download(url, location);
     }
 }
