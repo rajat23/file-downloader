@@ -5,7 +5,8 @@ import io.Writer;
 public class StateManager {
 
     private enum Status {
-        DOWNLOADING
+        DOWNLOADING,
+        PAUSE,
     }
 
     private Status status;
@@ -29,6 +30,14 @@ public class StateManager {
 
     public void seek() {
         writer.seek(downloaded);
+    }
+
+    public void pause() {
+        status = Status.PAUSE;
+    }
+
+    public void resume() {
+        status = Status.DOWNLOADING;
     }
 
 }

@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -40,5 +41,20 @@ public class StateManagerUnitTest {
         state.seek();
         Mockito.verify(writer).seek(captor.capture());
         assertEquals(captor.getValue(),100,0.0);
+    }
+
+    @Test
+    public void shouldBeAbleToPauseTheDownloading() {
+        state.pause();
+
+        assertFalse(state.isDownloading());
+    }
+
+    @Test
+    public void shouldBeAbleToResumeDownloading() {
+        state.pause();
+        state.resume();
+
+        assertTrue(state.isDownloading());
     }
 }
