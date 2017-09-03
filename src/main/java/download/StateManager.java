@@ -22,7 +22,6 @@ public class StateManager {
         this.connection = connection;
     }
 
-
     public boolean isDownloading() {
         return status == Status.DOWNLOADING;
     }
@@ -44,5 +43,4 @@ public class StateManager {
     public void resume() {
         status = Status.DOWNLOADING;
     }
-
 }

@@ -50,10 +50,10 @@ public class DownloaderTest {
         when(writer.getRandomAccessFile()).thenReturn(fileToBeDownload);
 
         Optional<RandomAccessFile> actualFile = downloader.download();
-        verify(stateManager,times(2)).isDownloading();
-        verify(reader,times(2)).readContent(buffer);
-        verify(stateManager,times(1)).trackContentDownloaded(bytesRead);
-        verify(writer,times(1)).write(bytesRead,buffer);
+        verify(stateManager, times(2)).isDownloading();
+        verify(reader, times(2)).readContent(buffer);
+        verify(stateManager, times(1)).trackContentDownloaded(bytesRead);
+        verify(writer, times(1)).write(bytesRead, buffer);
 
         assertEquals(actualFile.get().length(), fileSize);
     }

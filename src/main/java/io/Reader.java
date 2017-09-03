@@ -24,7 +24,7 @@ public class Reader {
         }
     }
 
-    public int readContent(byte [] buffer) {
+    public int readContent(byte[] buffer) {
         int bytesRead = 0;
         try {
             if (inputStream.isPresent()) {

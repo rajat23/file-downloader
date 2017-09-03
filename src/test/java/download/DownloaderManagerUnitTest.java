@@ -36,7 +36,7 @@ public class DownloaderManagerUnitTest {
 
     @Before
     public void setUp() {
-        downloaderManager = new DownloaderManager(connection, reader, writer,downloader);
+        downloaderManager = new DownloaderManager(connection, reader, writer, downloader);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class DownloaderManagerUnitTest {
         doNothing().when(writer).obtainOutputStream(location, url);
 
         when(downloader.download()).thenReturn(fileToBeDownload);
-        Optional<RandomAccessFile> actualFile = downloaderManager.download(url,location);
+        Optional<RandomAccessFile> actualFile = downloaderManager.download(url, location);
 
         assertEquals(actualFile.get().length(), fileSize);
 

@@ -17,13 +17,13 @@ public class Downloader {
 
     public Optional<RandomAccessFile> download() {
         while (state.isDownloading()) {
-            byte [] buffer = new byte[BUFFER_SIZE];
+            byte[] buffer = new byte[BUFFER_SIZE];
             int bytesRead = reader.readContent(buffer);
             if (noMoreContentAvailable(bytesRead))
                 break;
             state.trackContentDownloaded(bytesRead);
             Display.progress();
-            writer.write(bytesRead,buffer);
+            writer.write(bytesRead, buffer);
         }
         return writer.getRandomAccessFile();
     }

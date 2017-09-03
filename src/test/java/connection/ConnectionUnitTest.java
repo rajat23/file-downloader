@@ -26,7 +26,7 @@ public class ConnectionUnitTest {
 
         connection.connectTo(url);
 
-        assertEquals(new URL("http://sample.com/file"),connection.getHttpURLConnection().getURL());
+        assertEquals(new URL("http://sample.com/file"), connection.getHttpURLConnection().getURL());
 
     }
 
