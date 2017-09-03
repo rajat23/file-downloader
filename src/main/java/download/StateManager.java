@@ -1,5 +1,6 @@
 package download;
 
+import connection.Connection;
 import io.Writer;
 
 public class StateManager {
@@ -12,11 +13,13 @@ public class StateManager {
     private Status status;
     private int downloaded;
     private Writer writer;
+    private Connection connection;
 
-    public StateManager(Writer writer) {
+    public StateManager(Writer writer, Connection connection) {
         this.downloaded = 0;
         this.writer = writer;
         this.status = Status.DOWNLOADING;
+        this.connection = connection;
     }
 
 
@@ -34,6 +37,8 @@ public class StateManager {
 
     public void pause() {
         status = Status.PAUSE;
+        connection.setRangeHeader(downloaded);
+        writer.seek(downloaded);
     }
 
     public void resume() {

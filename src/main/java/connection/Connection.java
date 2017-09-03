@@ -26,4 +26,9 @@ public class Connection {
     public void disconnect() {
         httpURLConnection.disconnect();
     }
+
+    public void setRangeHeader(int downloaded) {
+        httpURLConnection.setRequestProperty("Range",
+                "bytes=" + downloaded + "-");
+    }
 }

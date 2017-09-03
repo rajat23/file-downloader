@@ -11,8 +11,8 @@ public class Application {
 
         Reader reader = new Reader();
         Writer writer = new Writer();
-        StateManager stateManager = new StateManager(writer);
         Connection connection = new Connection();
+        StateManager stateManager = new StateManager(writer,connection);
         Downloader downloader = new Downloader(stateManager,reader,writer);
 
         DownloaderManager downloaderManager = new DownloaderManager(connection, reader, writer,downloader);
