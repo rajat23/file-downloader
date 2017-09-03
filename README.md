@@ -1,4 +1,4 @@
-# file-downloader  [![Build Status]([![Build Status](https://travis-ci.org/rajat23/file-downloader.svg?branch=master)](https://travis-ci.org/rajat23/file-downloader))
+# file-downloader [![Build Status](https://travis-ci.org/rajat23/file-downloader.svg?branch=master)](https://travis-ci.org/rajat23/file-downloader)
 
 Java utility to download the file given a url and location
 
